@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Docker Arcade</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="top">
+    <div class="brand">
+      <span class="logo">🐳</span>
+      <div>
+        <h1>DOCKER <span>ARCADE</span></h1>
+        <p>Контейнерде жұмыс істейтін мини-ойындар</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="soundBtn" class="btn ghost">🔊 Дыбыс</button>
+      <button id="resetRecords" class="btn ghost">♻️ Рекордтар</button>
+    </div>
+  </header>
+
+  <section class="records">
+    <div class="chip"><small>🐍 Snake</small><b id="rSnake">0</b></div>
+    <div class="chip"><small>🧠 Memory</small><b id="rMem">—</b></div>
+    <div class="chip"><small>⚡ Реакция</small><b id="rReact">—</b></div>
+    <div class="chip"><small>🐳 Кит аулау</small><b id="rWhale">0</b></div>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="snake">🐍 Snake</button>
+    <button class="tab" data-tab="memory">🧠 Memory</button>
+    <button class="tab" data-tab="react">⚡ Реакция</button>
+    <button class="tab" data-tab="whale">🐳 Кит аулау</button>
+  </nav>
+
+  <main class="stage">
+
+    <section id="tab-snake" class="panel active">
+      <div class="panel-head">
+        <h2>Snake</h2>
+        <div class="stats"><span>Ұпай: <b id="snakeScore">0</b></span></div>
+      </div>
+      <canvas id="snakeCanvas" width="360" height="360"></canvas>
+      <div class="btn-row center">
+        <button id="snakeBtn" class="btn primary">▶ Бастау</button>
+        <button id="snakeRestart" class="btn ghost">↺ Қайта</button>
+      </div>
+      <div class="dpad">
+        <button class="btn ghost" data-dir="up">▲</button>
+        <button class="btn ghost" data-dir="left">◀</button>
+        <button class="btn ghost" data-dir="down">▼</button>
+        <button class="btn ghost" data-dir="right">▶</button>
+      </div>
+      <p class="hint">Бағыттау: көрсеткілер немесе W A S D · Бос орын — тоқтату</p>
+    </section>
+
+    <section id="tab-memory" class="panel">
+      <div class="panel-head">
+        <h2>Memory</h2>
+        <div class="stats"><span>Жүріс: <b id="memMoves">0</b></span><span>Уақыт: <b id="memTime">0с</b></span></div>
+      </div>
+      <div id="memGrid" class="mem-grid"></div>
+      <div class="btn-row center">
+        <button id="memNew" class="btn accent">🔀 Жаңа ойын</button>
+      </div>
+      <p class="hint">Барлық жұпты аз жүріспен тап</p>
+    </section>
+
+    <section id="tab-react" class="panel">
+      <div class="panel-head"><h2>Реакция тесті</h2></div>
+      <div id="reactBox" class="react-box"></div>
+      <p class="hint">Түс жасылға айналғанда мүмкіндігінше тез бас</p>
+    </section>
+
+    <section id="tab-whale" class="panel">
+      <div class="panel-head">
+        <h2>Кит аулау</h2>
+        <div class="stats"><span>Ұпай: <b id="whaleScore">0</b></span><span>Уақыт: <b id="whaleTime">30с</b></span></div>
+      </div>
+      <div id="holes" class="holes"></div>
+      <div class="btn-row center">
+        <button id="whaleBtn" class="btn primary">▶ Бастау</button>
+      </div>
+      <p class="hint">30 секундта шыққан киттерді бас — жылдамдық артады!</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">Docker Arcade · nginx:alpine · 2026</footer>
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
